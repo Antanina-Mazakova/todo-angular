@@ -1,4 +1,2 @@
-import * as moment from 'moment';
-
-export const getTimestamp = (date?: string): number => (moment(date)).startOf('day').valueOf();
+export const isDateExpired = (date: Date) => new Date(date).valueOf() < new Date().valueOf();
 

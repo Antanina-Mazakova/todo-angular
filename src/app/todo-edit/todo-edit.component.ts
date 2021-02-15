@@ -13,7 +13,7 @@ export class TodoEditComponent implements OnInit {
   id: string;
   todo: ITodo;
   todoData = {
-    dueDate: '',
+    dueDate: new Date(),
     title: ''
   }
 

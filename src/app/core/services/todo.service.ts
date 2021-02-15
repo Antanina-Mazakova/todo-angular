@@ -3,14 +3,14 @@ import { BehaviorSubject } from 'rxjs';
 import { v4 as uuidv4 } from 'uuid';
 
 import { Todo, ITodo } from 'src/app/core/models/todo.model';
-import { getTimestamp } from 'src/app/core/helpers';
+import { isDateExpired } from 'src/app/core/helpers';
 
 @Injectable({ providedIn: 'root' })
 export class TodoService {
   todos: ITodo[] = [{
     id: uuidv4(),
     title: 'Create ToDo list',
-    dueDate: '',
+    dueDate: new Date(),
     completed: true,
     expired: false
   }];
@@ -21,7 +21,8 @@ export class TodoService {
   constructor() { }
 
   addTodo = (todoItem: ITodo) => {
-    const expired = getTimestamp() > getTimestamp(todoItem.dueDate);
+    const { dueDate } = todoItem;
+    const expired = isDateExpired(dueDate);
     const todo = new Todo({ ...todoItem, id: uuidv4(), completed: false, expired });
 
     const todoList = this.todoList.getValue();
@@ -55,7 +56,8 @@ export class TodoService {
   }
 
   editTodo = (todoItem: ITodo): void => {
-    const expired = getTimestamp() > getTimestamp(todoItem.dueDate);
+    const { dueDate } = todoItem;
+    const expired = isDateExpired(dueDate);
     const todoList = this.todoList.getValue()
       .map((todo: ITodo): ITodo => {
         if (todo.id === todoItem.id) {

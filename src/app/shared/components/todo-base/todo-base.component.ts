@@ -12,7 +12,7 @@ export class TodoBaseComponent implements OnInit {
   @Input() submitTitle: string;
   @Input() todoData: {
     title: string;
-    dueDate: string;
+    dueDate: Date;
   }
 
   todoForm = new FormGroup({

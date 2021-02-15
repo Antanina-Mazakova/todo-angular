@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { TodoBaseComponent } from 'src/app/todo-base/todo-base.component';
+import { TodoBaseComponent } from 'src/app/shared/components/todo-base/todo-base.component';
 import { TodoService } from 'src/app/core/services/todo.service';
 import { ITodo } from '../core/models/todo.model';
 

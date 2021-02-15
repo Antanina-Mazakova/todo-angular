@@ -19,7 +19,7 @@ import { EmptyStateComponent } from 'src/app/shared/components/empty-state/empty
 import { TodoAddComponent } from 'src/app/todo-add/todo-add.component';
 import { TodoEditComponent } from './todo-edit/todo-edit.component';
 import { TodoContainerComponent } from './todo-container/todo-container.component';
-import { TodoBaseComponent } from './todo-base/todo-base.component';
+import { TodoBaseComponent } from './shared/components/todo-base/todo-base.component';
 
 @NgModule({
   declarations: [
