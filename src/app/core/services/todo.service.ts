@@ -55,7 +55,6 @@ export class TodoService {
   }
 
   editTodo = (todoItem: ITodo): void => {
-    debugger;
     const expired = getTimestamp() > getTimestamp(todoItem.dueDate);
     const todoList = this.todoList.getValue()
       .map((todo: ITodo): ITodo => {
