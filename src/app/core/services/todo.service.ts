@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import * as moment from 'moment';
+import { v4 as uuidv4 } from 'uuid';
 
 import { Todo, ITodo } from 'src/app/core/models/todo.model';
-import { generateGUID, getTimestamp } from 'src/app/core/helpers';
+import { getTimestamp } from 'src/app/core/helpers';
 
 @Injectable({ providedIn: 'root' })
 export class TodoService {
   todos: ITodo[] = [{
-    id: generateGUID(),
+    id: uuidv4(),
     title: 'Create ToDo list',
     dueDate: '',
     completed: true,
@@ -22,7 +22,7 @@ export class TodoService {
 
   addTodo = (todoItem: ITodo) => {
     const expired = getTimestamp() > getTimestamp(todoItem.dueDate);
-    const todo = new Todo({ ...todoItem, id: generateGUID(), completed: false, expired });
+    const todo = new Todo({ ...todoItem, id: uuidv4(), completed: false, expired });
 
     const todoList = this.todoList.getValue();
     this.todoList.next([todo, ...todoList]);
