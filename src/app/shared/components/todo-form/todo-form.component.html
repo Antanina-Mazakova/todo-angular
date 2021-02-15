@@ -1,5 +1,5 @@
-<form [formGroup]="todoForm" (ngSubmit)="submit(formDirective)"  #formDirective="ngForm" class="todo-wrapper">
-  <mat-form-field appearance="fill" class="todo-title">
+<form [formGroup]="todoForm" (ngSubmit)="submit(formDirective)"  #formDirective="ngForm" class="todo-form-wrapper">
+  <mat-form-field appearance="fill" class="todo-form-title">
     <mat-label>ToDo Title</mat-label>
     <input
       #titleValue
@@ -23,7 +23,7 @@
     <mat-error *ngIf="hasError('dueDate', 'pattern')">Choose correct Due date</mat-error>
   </mat-form-field>
 
-  <button type="submit" mat-icon-button color="primary" class="todo-button">
+  <button type="submit" mat-icon-button color="primary" class="todo-form-submit-button">
     <mat-icon class="icon">{{iconName}}</mat-icon>
     {{submitTitle}}
   </button>

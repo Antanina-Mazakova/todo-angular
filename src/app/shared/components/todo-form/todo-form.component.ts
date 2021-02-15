@@ -1,16 +1,16 @@
 import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
-import {FormControl, FormControlDirective, FormGroup, FormGroupDirective, Validators, Form} from '@angular/forms';
+import { FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-todo-base',
-  templateUrl: './todo-base.component.html',
-  styleUrls: ['./todo-base.component.scss']
+  selector: 'app-todo-form',
+  templateUrl: './todo-form.component.html',
+  styleUrls: ['./todo-form.component.scss']
 })
-export class TodoBaseComponent implements OnInit {
-  @Output() submitData = new EventEmitter<{dueDate: Date, title: string }>();
+export class TodoFormComponent implements OnInit {
+  @Output() submitTodo = new EventEmitter<{dueDate: Date, title: string }>();
   @Input() iconName: string;
   @Input() submitTitle: string;
-  @Input() todoData: {
+  @Input() todo: {
     title: string;
     dueDate: Date;
   }
@@ -23,18 +23,18 @@ export class TodoBaseComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    if (this.todoData) {
-      this.todoForm.patchValue({ title: this.todoData?.title, dueDate: this.todoData?.dueDate });
+    if (this.todo) {
+      this.todoForm.patchValue({ title: this.todo?.title, dueDate: this.todo?.dueDate });
     }
   }
 
   submit = (formDirective: FormGroupDirective) => {
     if (this.todoForm.invalid) {
-        return;
+      return;
     }
 
     const todoData = this.todoForm.value;
-    this.submitData.emit(todoData);
+    this.submitTodo.emit(todoData);
 
     formDirective.resetForm();
     this.todoForm.reset();

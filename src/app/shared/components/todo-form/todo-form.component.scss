@@ -1,5 +1,5 @@
 :host {
-  .todo {
+  .todo-form {
     &-wrapper {
       display: flex;
       align-items: center;
@@ -10,7 +10,7 @@
       width: 22rem;
     }
 
-    &-button {
+    &-submit-button {
       margin: 0 0 1.2rem .5rem;
 
       .icon {
@@ -19,4 +19,3 @@
     }
   }
 }
-
