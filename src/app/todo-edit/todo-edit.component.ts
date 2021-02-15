@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { TodoService } from 'src/app/core/services/todo.service';
-import { ITodo } from '../core/models/todo.model';
+import { ITodo, ITodoInput } from '../core/models/todo.model';
 
 @Component({
   selector: 'app-todo-edit',
@@ -31,7 +31,7 @@ export class TodoEditComponent implements OnInit {
     });
   }
 
-  updateTodo = (todoData: ITodo): void => {
+  updateTodo = (todoData: ITodoInput): void => {
     this.todoService.editTodo({ ...todoData, id: this.id });
     this.router.navigate(['/todos']);
   }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { v4 as uuidv4 } from 'uuid';
 
-import { Todo, ITodo } from 'src/app/core/models/todo.model';
+import { ITodo, ITodoInput } from 'src/app/core/models/todo.model';
 import { isDateExpired } from 'src/app/core/helpers';
 
 @Injectable({ providedIn: 'root' })
@@ -12,7 +12,7 @@ export class TodoService {
     title: 'Create ToDo list',
     dueDate: new Date(),
     completed: true,
-    expired: false
+    expired: isDateExpired(new Date())
   }];
 
   private todoList = new BehaviorSubject<ITodo[]>(this.todos);
@@ -20,10 +20,10 @@ export class TodoService {
 
   constructor() { }
 
-  addTodo = (todoItem: ITodo) => {
+  addTodo = (todoItem: ITodoInput) => {
     const { dueDate } = todoItem;
     const expired = isDateExpired(dueDate);
-    const todo = new Todo({ ...todoItem, id: uuidv4(), completed: false, expired });
+    const todo = { ...todoItem, id: uuidv4(), completed: false, expired };
 
     const todoList = this.todoList.getValue();
     this.todoList.next([todo, ...todoList]);
@@ -52,16 +52,16 @@ export class TodoService {
   }
 
   getTodo = (id: string | null): ITodo => {
-    return this.todoList.getValue().find((todo: ITodo): boolean => todo.id === id) || new Todo({
+    return this.todoList.getValue().find((todo: ITodo): boolean => todo.id === id) || {
       id: '',
       title: '',
       completed: false,
       expired: false,
       dueDate: new Date()
-    });
+    };
   }
 
-  editTodo = (todoItem: ITodo): void => {
+  editTodo = (todoItem: ITodoInput & { id: string }): void => {
     const { dueDate } = todoItem;
     const expired = isDateExpired(dueDate);
     const todoList = this.todoList.getValue()

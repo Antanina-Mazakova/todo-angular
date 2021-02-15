@@ -15,8 +15,8 @@ import { ITodo } from 'src/app/core/models/todo.model';
 export class TodoItemComponent {
   @Input() item: ITodo;
 
-  @Output() toggleCompletion = new EventEmitter();
-  @Output() removeTodo = new EventEmitter();
+  @Output() toggleCompletion = new EventEmitter<{ id: string, state: boolean }>();
+  @Output() removeTodo = new EventEmitter<string>();
 
   toggleCompletionState = (id: any, state: boolean): void => {
     this.toggleCompletion.emit({ id, state });

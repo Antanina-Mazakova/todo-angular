@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {FormControl, FormControlDirective, FormGroup, FormGroupDirective, Validators, Form} from '@angular/forms';
 
 @Component({
   selector: 'app-todo-base',
@@ -7,7 +7,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./todo-base.component.scss']
 })
 export class TodoBaseComponent implements OnInit {
-  @Output() submitData = new EventEmitter();
+  @Output() submitData = new EventEmitter<{dueDate: Date, title: string }>();
   @Input() iconName: string;
   @Input() submitTitle: string;
   @Input() todoData: {
@@ -28,7 +28,7 @@ export class TodoBaseComponent implements OnInit {
     }
   }
 
-  submit = (formDirective: any) => {
+  submit = (formDirective: FormGroupDirective) => {
     if (this.todoForm.invalid) {
         return;
     }
