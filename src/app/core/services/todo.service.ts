@@ -29,7 +29,7 @@ export class TodoService {
     this.todoList.next([todo, ...todoList]);
   }
 
-  toggleCompletion = (data: { id: string, state: any }): void => {
+  toggleCompletion = (data: { id: string, state: boolean }): void => {
     const { id, state } = data;
 
     const todoList = this.todoList.getValue()
@@ -51,8 +51,15 @@ export class TodoService {
     this.todoList.next(todoList);
   }
 
-  getTodo = (id: any): any => {
-    return this.todoList.getValue().find((todo: ITodo): boolean => todo.id === id);
+  getTodo = (id: string): ITodo | null => {
+    const todo =
+      this.todoList.getValue().find((todo: ITodo): boolean => todo.id === id);
+
+    if (!todo) {
+      return null;
+    }
+
+    return todo;
   }
 
   editTodo = (todoItem: ITodo): void => {

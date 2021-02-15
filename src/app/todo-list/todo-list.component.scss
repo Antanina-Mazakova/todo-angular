@@ -1,11 +1,14 @@
-mat-list-item {
-  border: 1px solid rgba(0,0,0,.42);
+:host {
+  mat-list-item {
+    border: 1px solid rgba(0,0,0,.42);
 
-  &:not(&:first-child) {
-    border-top: none;
-  }
+    &:not(&:first-child) {
+      border-top: none;
+    }
 
-  app-todo-item {
-    width: 100%;
+    app-todo-item {
+      width: 100%;
+    }
   }
 }
+

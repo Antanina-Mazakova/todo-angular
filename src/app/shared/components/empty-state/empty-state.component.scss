@@ -1,8 +1,10 @@
-.empty-state-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: lightgray;
-  font-size: 1rem;
-  margin-top: 5rem;
+:host {
+  .empty-state-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: lightgray;
+    font-size: 1rem;
+    margin-top: 5rem;
+  }
 }

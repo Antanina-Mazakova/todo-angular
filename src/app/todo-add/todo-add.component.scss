@@ -1,20 +1,22 @@
-.todo-add {
-  &-wrapper {
-    display: flex;
-    align-items: center;
-    margin-top: 2rem;
-  }
+:host {
+  .todo-add {
+    &-wrapper {
+      display: flex;
+      align-items: center;
+      margin-top: 2rem;
+    }
 
-  &-title {
-    margin-right: 1rem;
-    width: 22rem;
-  }
+    &-title {
+      margin-right: 1rem;
+      width: 22rem;
+    }
 
-  &-button {
-    margin: 0 0 1.2rem .5rem;
+    &-button {
+      margin: 0 0 1.2rem .5rem;
 
-    .add-icon {
-      font-size: 1.8rem;
+      .add-icon {
+        font-size: 1.8rem;
+      }
     }
   }
 }
