@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 
-import { TodoBaseComponent } from 'src/app/shared/components/todo-base/todo-base.component';
 import { TodoService } from 'src/app/core/services/todo.service';
 import { ITodo } from '../core/models/todo.model';
 
@@ -9,10 +8,8 @@ import { ITodo } from '../core/models/todo.model';
   templateUrl: './todo-add.component.html',
   styleUrls: ['./todo-add.component.scss']
 })
-export class TodoAddComponent extends TodoBaseComponent {
-  constructor(private todoService: TodoService) {
-    super();
-  }
+export class TodoAddComponent {
+  constructor(private todoService: TodoService) {}
 
   addTodo = (todoData: ITodo) => {
     this.todoService.addTodo(todoData);

@@ -40,7 +40,7 @@ export class TodoBaseComponent implements OnInit {
     this.todoForm.reset();
   }
 
-  hasError = (controlName: string, errorName: string) => {
+  hasError = (controlName: string, errorName: string): boolean => {
     return this.todoForm.controls[controlName].hasError(errorName);
   }
 }

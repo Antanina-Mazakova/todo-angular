@@ -51,15 +51,14 @@ export class TodoService {
     this.todoList.next(todoList);
   }
 
-  getTodo = (id: string): ITodo | null => {
-    const todo =
-      this.todoList.getValue().find((todo: ITodo): boolean => todo.id === id);
-
-    if (!todo) {
-      return null;
-    }
-
-    return todo;
+  getTodo = (id: string | null): ITodo => {
+    return this.todoList.getValue().find((todo: ITodo): boolean => todo.id === id) || new Todo({
+      id: '',
+      title: '',
+      completed: false,
+      expired: false,
+      dueDate: new Date()
+    });
   }
 
   editTodo = (todoItem: ITodo): void => {
