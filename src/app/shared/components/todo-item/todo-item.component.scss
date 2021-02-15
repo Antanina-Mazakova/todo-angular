@@ -1,0 +1,31 @@
+.list-item {
+  display: grid;
+  grid-template-columns: 3.5fr 2fr 1.5fr .5fr .5fr;
+  align-items: center;
+
+  .due-date-passed {
+    color: #ff4081;
+  }
+
+  &.completed {
+    mat-checkbox {
+      text-decoration: line-through;
+    }
+  }
+
+  &:not(.completed) {
+    ::ng-deep .mat-checkbox-checked .mat-checkbox-background,
+    ::ng-deep .mat-checkbox-indeterminate .mat-checkbox-background {
+      background-color: #ff4081;
+    }
+  }
+
+  mat-checkbox {
+    overflow: hidden;
+  }
+
+  ::ng-deep .mat-checkbox-checked .mat-checkbox-background,
+  ::ng-deep .mat-checkbox-indeterminate .mat-checkbox-background {
+    background-color: lightgreen;
+  }
+}

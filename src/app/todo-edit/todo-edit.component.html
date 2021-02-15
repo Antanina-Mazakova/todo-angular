@@ -1,0 +1,6 @@
+<button mat-button [routerLink]="['/todos']">Back</button>
+<app-todo-base
+  [todoData]="todoData"
+  [submitTitle]="'Update'"
+  (submitData)="updateTodo($event)"
+></app-todo-base>

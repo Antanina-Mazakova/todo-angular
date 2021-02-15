@@ -1,0 +1,13 @@
+<mat-list role="list" *ngIf="todoList.length > 0; else noItems">
+  <mat-list-item role="listitem" *ngFor="let todoItem of todoList; let i = index;">
+    <app-todo-item
+      [item]="todoItem"
+      (toggleCompletion)="toggleCompletion($event)"
+      (removeTodo)="removeTodo($event)"
+    ></app-todo-item>
+  </mat-list-item>
+</mat-list>
+
+<ng-template #noItems>
+  <app-empty-state [title]="'Add your first task now'"></app-empty-state>
+</ng-template>
