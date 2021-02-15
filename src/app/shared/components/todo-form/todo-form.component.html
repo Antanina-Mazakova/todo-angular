@@ -20,7 +20,6 @@
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
     <mat-error *ngIf="hasError('dueDate', 'required')">Due date is required</mat-error>
-    <mat-error *ngIf="hasError('dueDate', 'pattern')">Choose correct Due date</mat-error>
   </mat-form-field>
 
   <button type="submit" mat-icon-button color="primary" class="todo-form-submit-button">
